@@ -4,7 +4,7 @@ import (
 	"log"
 	"github.com/Aayush2609/week2-GL1-CipherSchools/Golang-application/models"
 	"github.com/jinzhu/gorm"
-)
+	_ "github.com/jinzhu/gorm/dialects/postgres")
 
 var DB *gorm.DB
 func GetDB()*gorm.DB {
