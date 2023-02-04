@@ -1,9 +1,9 @@
 package main
 
 import (
-    "fmt"
-    "sync"
-    "time"
+	"fmt"
+	"sync"
+	"time"
 )
 
 var wait sync.WaitGroup
@@ -11,31 +11,29 @@ var counter int
 var mutex sync.Mutex
 
 type Counter struct {
-    counter int
-    mutex sync.Mutex
+	counter int
+	mutex   sync.Mutex
 }
 
 func add(hint string) {
-    for i: = 0;
-    i < 3;
-    i++{
-        mutex.Lock()
-        a: = counter
-        a++
-        time.Sleep(time.Second * 3)
-        counter = a
-        fmt.Println(hint, " i:=", i, " Count:=", counter)
-        mutex.Unlock()
-    }
-    wait.Done()
+	for i := 0; i < 3; i++ {
+		mutex.Lock()
+		a := counter
+		a++
+		time.Sleep(time.Second * 3)
+		counter = a
+		fmt.Println(hint, " i:=", i, " Count:=", counter)
+		mutex.Unlock()
+	}
+	wait.Done()
 }
 func main32() {
-    counter = 0
-    wait.Add(2)
-    go add("first: ")
-    go add("second: ")
-    wait.Wait()
-    fmt.Println("final value of counter:=", counter)
+	counter = 0
+	wait.Add(2)
+	go add("first: ")
+	go add("second: ")
+	wait.Wait()
+	fmt.Println("final value of counter:=", counter)
 }
 
 // func main() {
